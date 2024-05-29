@@ -7,6 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import steps.BaseSteps;
 
 public class BasePage extends BaseSteps {
-    protected AndroidDriver driver = super.driver;
+    protected AndroidDriver driver = getDriver();
 
 }

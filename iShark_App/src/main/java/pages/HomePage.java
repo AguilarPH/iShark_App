@@ -11,7 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage{
 
-    AndroidDriver driver = super.driver;
     public HomePage(AndroidDriver driver) {
         PageFactory.initElements(new AppiumFieldDecorator(driver), driver);
     }

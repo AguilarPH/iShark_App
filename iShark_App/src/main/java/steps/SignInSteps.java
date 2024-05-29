@@ -11,8 +11,8 @@ public class SignInSteps extends BaseSteps {
     private AndroidDriver driver;
     private SignInPage signInPage;
 
-    public SignInSteps(AndroidDriver driver) {
-        this.driver = driver;
+    public SignInSteps() {
+        this.driver = getDriver();
         this.signInPage = new SignInPage();
         PageFactory.initElements(new AppiumFieldDecorator(driver), signInPage);
     }

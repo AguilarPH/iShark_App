@@ -13,12 +13,14 @@ import java.lang.*;
 import java.net.URL;
 
 public class BaseSteps {
-    protected static AndroidDriver driver;
+    private AndroidDriver driver;
     protected AppiumDriverLocalService service;
 
     public void BaseSteps() {
-        BaseSteps.driver = setSauceLabsCaps();
+        this.driver = setSauceLabsCaps();
     }
+
+    public AndroidDriver getDriver() {return driver;}
 
     private void configureAppium(URL url) throws MalformedURLException{
 

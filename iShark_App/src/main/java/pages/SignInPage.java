@@ -9,16 +9,11 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SignInPage extends BasePage{
 
-    AndroidDriver driver;
     public SignInPage() {
-        this.driver = super.driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    public SignInPage(AndroidDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-    }
+    public SignInPage(AndroidDriver driver) {PageFactory.initElements(new AppiumFieldDecorator(driver), this);}
     @AndroidFindBy(xpath = "//android.widget.Image[@text='CURRENT SIGN IN']")
     private WebElement setSignInButton;
     public WebElement signInButton() {return setSignInButton;}
