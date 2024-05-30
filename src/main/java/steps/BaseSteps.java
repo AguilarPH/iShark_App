@@ -1,0 +1,114 @@
+package steps;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+import java.io.*;
+import java.net.*;
+import java.lang.*;
+import java.net.URL;
+
+public class BaseSteps {
+    private AppiumDriver driver;
+    protected AppiumDriverLocalService service;
+
+    public BaseSteps() {
+        setAndroidOptions();
+    }
+
+    public AppiumDriver getDriver() {return driver;}
+
+    private void configureAppium() throws MalformedURLException{
+
+        //Appium Server initialization
+        File file = new File("C:\\Users\\paguilar\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js");
+
+        AppiumDriverLocalService service = new AppiumServiceBuilder().withAppiumJS(file)
+                .withIPAddress("127.0.0.1").usingPort(4723).build();
+        service.start();
+
+        //Android driver setup and initialization
+        UiAutomator2Options options = new UiAutomator2Options();
+        options.setDeviceName(""); // Add Device Name
+        options.setApp("C:\\Users\\paguilar\\DownloadsiShark_3.3.apk");
+
+        driver = new AndroidDriver(new URL("http://127.0.0.1;4723/"), options);
+    }
+    private void setAndroidOptions() {
+        String appUrl = System.getProperty("user.dir") + File.separator + "src" +
+                File.separator + "main" + File.separator +"resources" + File.separator + "iShark_3.3.apk";
+
+        UiAutomator2Options options = new UiAutomator2Options()
+                .setDeviceName("pixel_8")
+                .setUdid("emulator-5554")
+                .setAppPackage("com.blackboard.android.central.nova")
+                .setAppActivity("modolabs.kurogo.content.KurogoContentActivity");
+//                .setApp(appUrl);
+
+        URL url = null;
+        try {
+            url = new URL("http://0.0.0.0:4723");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+        driver = new AndroidDriver(url, options);
+    }
+
+    private AndroidDriver setAndroidDriver() {
+        String appUrl = System.getProperty("user.dir") + File.separator + "src" +
+        File.separator + "main" + File.separator +"resources" + File.separator + "iShark_3.3.apk";
+
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("platformName", "Android");
+        caps.setCapability("deviceName", "pixel_8");
+        caps.setCapability("automationName", "UiAutomator2");
+        caps.setCapability("udid", "emulator-5554");
+        caps.setCapability("app",appUrl);
+
+        URL url = null;
+        try {
+            url = new URL("http://127.0.0.1:4723/");
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println("Android driver set");
+        return new AndroidDriver(url, caps);
+    }
+
+
+    private AndroidDriver setSauceLabsCaps(){
+
+        MutableCapabilities caps = new MutableCapabilities();
+        caps.setCapability("platformName", "Android");
+        caps.setCapability("appium:app", "storage:filename=iShark_3.3.apk");  // The filename of the mobile app
+        caps.setCapability("appium:deviceName", "Google Pixel 7 Pro");
+        caps.setCapability("appium:platformVersion", "14");
+        caps.setCapability("appium:automationName", "UiAutomator2");
+
+        MutableCapabilities sauceOptions = new MutableCapabilities();
+        sauceOptions.setCapability("username", "dadmatinova");
+        sauceOptions.setCapability("accessKey", "d64f8e10-d97a-4fe4-91f2-17527e7b6949");
+        sauceOptions.setCapability("build", "001");
+        sauceOptions.setCapability("name", "Appium-SauceLabs Demo");
+        caps.setCapability("sauce:options", sauceOptions);
+
+        URL url = null;
+        try {
+            url = new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return new AndroidDriver(url, caps);
+    }
+
+    public void tearDown() {
+        driver.quit();
+        service.stop();
+    }
+}
