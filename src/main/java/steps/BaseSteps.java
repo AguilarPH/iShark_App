@@ -12,13 +12,14 @@ import java.io.*;
 import java.net.*;
 import java.lang.*;
 import java.net.URL;
+import java.time.Duration;
 
 public class BaseSteps {
     private AppiumDriver driver;
     protected AppiumDriverLocalService service;
 
     public BaseSteps() {
-        setAndroidOptions();
+        setSauceLabsCaps();
     }
 
     public AppiumDriver getDriver() {return driver;}
@@ -46,6 +47,8 @@ public class BaseSteps {
         UiAutomator2Options options = new UiAutomator2Options()
                 .setDeviceName("pixel_8")
                 .setUdid("emulator-5554")
+                .setAvd("Pixel_8_API_VanillaIceCream")
+                .setAvdLaunchTimeout(Duration.ofMillis(180000))
                 .setAppPackage("com.blackboard.android.central.nova")
                 .setAppActivity("modolabs.kurogo.content.KurogoContentActivity");
 //                .setApp(appUrl);
@@ -59,30 +62,12 @@ public class BaseSteps {
         driver = new AndroidDriver(url, options);
     }
 
-    private AndroidDriver setAndroidDriver() {
-        String appUrl = System.getProperty("user.dir") + File.separator + "src" +
-        File.separator + "main" + File.separator +"resources" + File.separator + "iShark_3.3.apk";
-
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platformName", "Android");
-        caps.setCapability("deviceName", "pixel_8");
-        caps.setCapability("automationName", "UiAutomator2");
-        caps.setCapability("udid", "emulator-5554");
-        caps.setCapability("app",appUrl);
-
-        URL url = null;
-        try {
-            url = new URL("http://127.0.0.1:4723/");
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-
-        System.out.println("Android driver set");
-        return new AndroidDriver(url, caps);
-    }
-
-
     private AndroidDriver setSauceLabsCaps(){
+
+        UiAutomator2Options options = new UiAutomator2Options()
+                .setDeviceName("Google Pixel 7 Pro")
+                .setPlatformVersion("14")
+                .setApp("storage:filename=iShark_3.3.apk");
 
         MutableCapabilities caps = new MutableCapabilities();
         caps.setCapability("platformName", "Android");
@@ -96,7 +81,9 @@ public class BaseSteps {
         sauceOptions.setCapability("accessKey", "d64f8e10-d97a-4fe4-91f2-17527e7b6949");
         sauceOptions.setCapability("build", "001");
         sauceOptions.setCapability("name", "Appium-SauceLabs Demo");
-        caps.setCapability("sauce:options", sauceOptions);
+        //caps.setCapability("sauce:options", sauceOptions);
+
+        options.setCapability("sauce:options", sauceOptions);
 
         URL url = null;
         try {
