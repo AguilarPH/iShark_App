@@ -17,19 +17,23 @@ public class SignInPage extends BasePage{
     @AndroidFindBy(xpath = "//android.widget.Image[@text='CURRENT SIGN IN']")
     private WebElement setSignInButton;
     public WebElement signInButton() {return setSignInButton;}
+
     @AndroidFindBy(xpath = "//android.widget.Image[@text='NSU - Guest']")
     private WebElement setGuestIngress;
-
     public WebElement guestIngress() {return setGuestIngress;}
+
     @AndroidFindBy(className = "android.widget.EditText")
     private WebElement setNsuEmailText;
     public WebElement nsuEmailText() {return setNsuEmailText;}
+
     @AndroidFindBy(xpath = "//android.widget.Button[@text='Next']")
     private WebElement setNsuNextButton;
     public WebElement nsuNextButton() {return setNsuNextButton;}
+
     @AndroidFindBy(className = "android.widget.EditText")
     private WebElement setNsuPasswordText;
     public WebElement nsuPasswordText() {return setNsuPasswordText;}
+
     @AndroidFindBy(id = "idSIButton9")
     private WebElement setNsuSignInButton;
     public WebElement nsuSignInButton() {return setNsuSignInButton;}

@@ -6,7 +6,6 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.openqa.selenium.MutableCapabilities;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.*;
 import java.net.*;
@@ -19,7 +18,8 @@ public class BaseSteps {
     protected AppiumDriverLocalService service;
 
     public BaseSteps() {
-        setSauceLabsCaps();
+//        setSauceLabsCaps();
+        setAndroidOptions();
     }
 
     public AppiumDriver getDriver() {return driver;}
@@ -48,9 +48,9 @@ public class BaseSteps {
                 .setDeviceName("pixel_8")
                 .setUdid("emulator-5554")
                 .setAvd("Pixel_8_API_VanillaIceCream")
-                .setAvdLaunchTimeout(Duration.ofMillis(180000))
-                .setAppPackage("com.blackboard.android.central.nova")
-                .setAppActivity("modolabs.kurogo.content.KurogoContentActivity");
+                .setAvdLaunchTimeout(Duration.ofMillis(180000));
+//                .setAppPackage("com.blackboard.android.central.nova")
+//                .setAppActivity("modolabs.kurogo.content.KurogoContentActivity");
 //                .setApp(appUrl);
 
         URL url = null;
@@ -60,9 +60,10 @@ public class BaseSteps {
             throw new RuntimeException(e);
         }
         driver = new AndroidDriver(url, options);
+        System.out.println("session id: " + driver.getSessionId());
     }
 
-    private AndroidDriver setSauceLabsCaps(){
+    private void setSauceLabsCaps(){
 
         UiAutomator2Options options = new UiAutomator2Options()
                 .setDeviceName("Google Pixel 7 Pro")
@@ -91,11 +92,13 @@ public class BaseSteps {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        return new AndroidDriver(url, caps);
+        driver = new AndroidDriver(url, caps);
     }
 
     public void tearDown() {
         driver.quit();
         service.stop();
     }
+
+    public void wait(int time) {driver.manage().timeouts().implicitlyWait(Duration.ofMillis(time));}
 }
