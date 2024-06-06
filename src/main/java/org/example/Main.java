@@ -1,15 +1,7 @@
 package org.example;
 
-import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumDriver;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.testng.Assert;
-import steps.BaseSteps;
-import pages.SignInPage;
 import steps.SignInSteps;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 

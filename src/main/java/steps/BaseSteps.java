@@ -48,9 +48,9 @@ public class BaseSteps {
                 .setDeviceName("pixel_8")
                 .setUdid("emulator-5554")
                 .setAvd("Pixel_8_API_VanillaIceCream")
-                .setAvdLaunchTimeout(Duration.ofMillis(180000));
-//                .setAppPackage("com.blackboard.android.central.nova")
-//                .setAppActivity("modolabs.kurogo.content.KurogoContentActivity");
+                .setAvdLaunchTimeout(Duration.ofMillis(180000))
+                .setAppPackage("com.blackboard.android.central.nova")
+                .setAppActivity("modolabs.kurogo.content.KurogoContentActivity");
 //                .setApp(appUrl);
 
         URL url = null;
