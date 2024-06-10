@@ -13,7 +13,6 @@ public class SignInSteps extends BaseSteps {
     public SignInSteps() {
         this.driver = getDriver();
         this.signInPage = new SignInPage();
-        PageFactory.initElements(new AppiumFieldDecorator(driver), signInPage);
     }
 
     public void clickSignIn() {
