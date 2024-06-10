@@ -18,8 +18,8 @@ public class BaseSteps {
     protected AppiumDriverLocalService service;
 
     public BaseSteps() {
-//        setSauceLabsCaps();
-        setAndroidOptions();
+        setSauceLabsCaps();
+//        setAndroidOptions();
     }
 
     public AppiumDriver getDriver() {return driver;}
@@ -49,9 +49,9 @@ public class BaseSteps {
                 .setUdid("emulator-5554")
                 .setAvd("Pixel_8_API_VanillaIceCream")
                 .setAvdLaunchTimeout(Duration.ofMillis(180000))
-                .setAppPackage("com.blackboard.android.central.nova")
-                .setAppActivity("modolabs.kurogo.content.KurogoContentActivity");
-//                .setApp(appUrl);
+//                .setAppPackage("com.blackboard.android.central.nova")
+//                .setAppActivity("modolabs.kurogo.content.KurogoContentActivity");
+                .setApp(appUrl);
 
         URL url = null;
         try {
