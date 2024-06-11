@@ -32,13 +32,6 @@ public class BaseSteps {
         AppiumDriverLocalService service = new AppiumServiceBuilder().withAppiumJS(file)
                 .withIPAddress("127.0.0.1").usingPort(4723).build();
         service.start();
-
-        //Android driver setup and initialization
-        UiAutomator2Options options = new UiAutomator2Options();
-        options.setDeviceName(""); // Add Device Name
-        options.setApp("C:\\Users\\paguilar\\DownloadsiShark_3.3.apk");
-
-        driver = new AndroidDriver(new URL("http://127.0.0.1;4723/"), options);
     }
     private void setAndroidOptions() {
         String appUrl = System.getProperty("user.dir") + File.separator + "src" +
