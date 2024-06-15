@@ -18,21 +18,42 @@ public class BaseSteps {
     protected AppiumDriverLocalService service;
 
     public BaseSteps() {
+        try {
+            configureAppium();
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
         setSauceLabsCaps();
 //        setAndroidOptions();
     }
 
     public AppiumDriver getDriver() {return driver;}
 
-    private void configureAppium() throws MalformedURLException{
+    private void configureAppium() {
+        // Specify the path to your Node.js executable
+        String nodeJsPath = "C:\\Program Files\\nodejs\\node.exe";
 
-        //Appium Server initialization
-        File file = new File("C:\\Users\\paguilar\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js");
+        // Specify the path to your Appium.js file
+        String appiumJsPath = "C:\\Users\\tanos\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js";
 
-        AppiumDriverLocalService service = new AppiumServiceBuilder().withAppiumJS(file)
-                .withIPAddress("127.0.0.1").usingPort(4723).build();
+        // Create a service builder
+        AppiumServiceBuilder builder = new AppiumServiceBuilder()
+                .usingDriverExecutable(new File(nodeJsPath))
+                .withAppiumJS(new File(appiumJsPath))
+                .withIPAddress("127.0.0.1")
+                .usingPort(4723);
+
+        // Build and start the Appium server
+        service = AppiumDriverLocalService.buildService(builder);
         service.start();
+
+        if (service == null || !service.isRunning()) {
+            throw new RuntimeException("An error occurred while starting the Appium server");
+        }
+
+        System.out.println("Appium server started");
     }
+
     private void setAndroidOptions() {
         String appUrl = System.getProperty("user.dir") + File.separator + "src" +
                 File.separator + "main" + File.separator +"resources" + File.separator + "iShark_3.3.apk";
