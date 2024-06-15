@@ -9,21 +9,18 @@ public class Main {
     public static void main(String[] args) {
 
         SignInSteps signInSteps = new SignInSteps();
-        signInSteps.wait(6000);
+        signInSteps.waitForInitialPage();
 
         signInSteps.clickSignIn();
-        signInSteps.wait(5000);
 
         signInSteps.sendNSUEmail("nv486@mynsu.nova.edu");
         signInSteps.clickNSUNextButton();
-        signInSteps.wait(5000);
 
         //WebElement nsuPasswordText = driver.findElement(By.xpath("//android.widget.EditText"));
         //WebElement nsuSignInButton = driver.findElement(By.xpath("//android.widget.Button[@text='Sign in']"));
 
         signInSteps.sendNSUPassword("NsuFl@ridaQAPWD23");
         signInSteps.clickNSUSignIn();
-        signInSteps.wait(5000);
 
 //        WebElement navTabs = driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id=" +
 //                "'com.blackboard.android.central.nova:id/bottom_navigation']" +

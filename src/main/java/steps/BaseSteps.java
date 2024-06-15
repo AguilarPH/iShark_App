@@ -6,6 +6,9 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.openqa.selenium.MutableCapabilities;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.*;
 import java.net.*;
@@ -113,5 +116,18 @@ public class BaseSteps {
         service.stop();
     }
 
-    public void wait(int time) {driver.manage().timeouts().implicitlyWait(Duration.ofMillis(time));}
+    protected void waitToClick(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(webElement)).click();
+    }
+
+    protected void waitToSendKeys(WebElement webElement, String text) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(webElement)).sendKeys(text);
+    }
+
+    protected void waitToBeVisible(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
 }
