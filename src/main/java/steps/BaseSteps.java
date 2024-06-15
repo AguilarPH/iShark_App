@@ -42,8 +42,7 @@ public class BaseSteps {
                 .setUdid("emulator-5554")
                 .setAvd("Pixel_8_API_VanillaIceCream")
                 .setAvdLaunchTimeout(Duration.ofMillis(180000))
-//                .setAppPackage("com.blackboard.android.central.nova")
-//                .setAppActivity("modolabs.kurogo.content.KurogoContentActivity");
+                .setAutoGrantPermissions(true)  // This will allow the app to automatically accept the permissions
                 .setApp(appUrl);
 
         URL url = null;
