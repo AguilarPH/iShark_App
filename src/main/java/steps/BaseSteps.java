@@ -23,13 +23,13 @@ public class BaseSteps {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-        setSauceLabsCaps();
-//        setAndroidOptions();
+//        setSauceLabsCaps();
+        setAndroidOptions();
     }
 
     public AppiumDriver getDriver() {return driver;}
 
-    private void configureAppium() {
+    private void configureAppium() throws MalformedURLException{
         // Specify the path to your Node.js executable
         String nodeJsPath = "C:\\Program Files\\nodejs\\node.exe";
 
