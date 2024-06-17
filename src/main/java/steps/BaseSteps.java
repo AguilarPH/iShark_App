@@ -21,13 +21,13 @@ public class BaseSteps {
     protected AppiumDriverLocalService service;
 
     public BaseSteps() {
-        try {
-            configureAppium();
-        } catch (MalformedURLException e) {
-            throw new RuntimeException(e);
-        }
-//        setSauceLabsCaps();
-        setAndroidOptions();
+//        try {
+//            configureAppium();
+//        } catch (MalformedURLException e) {
+//            throw new RuntimeException(e);
+//        }
+         setSauceLabsCaps();
+//        setAndroidOptions();
     }
 
     public AppiumDriver getDriver() {return driver;}
@@ -96,11 +96,11 @@ public class BaseSteps {
         MutableCapabilities sauceOptions = new MutableCapabilities();
         sauceOptions.setCapability("username", "dadmatinova");
         sauceOptions.setCapability("accessKey", "d64f8e10-d97a-4fe4-91f2-17527e7b6949");
-        sauceOptions.setCapability("build", "001");
+        sauceOptions.setCapability("build", "appium-build-NK2GR");
         sauceOptions.setCapability("name", "Appium-SauceLabs Demo");
-        //caps.setCapability("sauce:options", sauceOptions);
+        caps.setCapability("sauce:options", sauceOptions);
 
-        options.setCapability("sauce:options", sauceOptions);
+//        options.setCapability("sauce:options", sauceOptions);
 
         URL url = null;
         try {
@@ -108,7 +108,7 @@ public class BaseSteps {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        driver = new AndroidDriver(url, caps);
+        this.driver = new AndroidDriver(url, caps);
     }
 
     public void tearDown() {
