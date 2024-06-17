@@ -81,32 +81,25 @@ public class BaseSteps {
 
     private void setSauceLabsCaps(){
 
-        UiAutomator2Options options = new UiAutomator2Options()
-                .setDeviceName("Google Pixel 7 Pro")
-                .setPlatformVersion("14")
-                .setApp("storage:filename=iShark_3.3.apk");
-
         MutableCapabilities caps = new MutableCapabilities();
         caps.setCapability("platformName", "Android");
         caps.setCapability("appium:app", "storage:filename=iShark_3.3.apk");  // The filename of the mobile app
         caps.setCapability("appium:deviceName", "Google Pixel 7 Pro");
         caps.setCapability("appium:platformVersion", "14");
         caps.setCapability("appium:automationName", "UiAutomator2");
-
         MutableCapabilities sauceOptions = new MutableCapabilities();
+        sauceOptions.setCapability("appiumVersion", "latest");
         sauceOptions.setCapability("username", "dadmatinova");
         sauceOptions.setCapability("accessKey", "d64f8e10-d97a-4fe4-91f2-17527e7b6949");
-        sauceOptions.setCapability("build", "appium-build-NK2GR");
-        sauceOptions.setCapability("name", "Appium-SauceLabs Demo");
+        sauceOptions.setCapability("build", "appium-build-001");
+        sauceOptions.setCapability("name", "iShark-Android-Test-001");
         caps.setCapability("sauce:options", sauceOptions);
-
-//        options.setCapability("sauce:options", sauceOptions);
 
         URL url = null;
         try {
             url = new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub");
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
         this.driver = new AndroidDriver(url, caps);
     }
