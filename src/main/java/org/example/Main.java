@@ -27,11 +27,11 @@ public class Main {
 //                "[@resource-id=\"com.blackboard.android.central.nova:id/bottom_navigation\"]" +
 //                "/android.widget.FrameLayout/android.view.ViewGroup/*"));
 
-        List<String> expectedTabs = new ArrayList<>();
-        expectedTabs.add("Home");
-        expectedTabs.add("Messages");
-        expectedTabs.add("Favorites");
-        expectedTabs.add("Menu");
+//        List<String> expectedTabs = new ArrayList<>();
+//        expectedTabs.add("Home");
+//        expectedTabs.add("Messages");
+//        expectedTabs.add("Favorites");
+//        expectedTabs.add("Menu");
 
 //        for (int i=0; i < navTabsChildren.size(); i++) {
 //            String tabText = navTabsChildren.get(i).findElement(AppiumBy.className("Android.widget.TextView")).getText();
