@@ -1,6 +1,5 @@
 package org.example;
 
-import steps.BaseSteps;
 import steps.SignInSteps;
 
 import java.util.ArrayList;
