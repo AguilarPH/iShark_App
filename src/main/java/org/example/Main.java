@@ -16,9 +16,6 @@ public class Main {
         signInSteps.sendNSUEmail("nv486@mynsu.nova.edu");
         signInSteps.clickNSUNextButton();
 
-        //WebElement nsuPasswordText = driver.findElement(By.xpath("//android.widget.EditText"));
-        //WebElement nsuSignInButton = driver.findElement(By.xpath("//android.widget.Button[@text='Sign in']"));
-
         signInSteps.sendNSUPassword("NsuFl@ridaQAPWD23");
         signInSteps.clickNSUSignIn();
 

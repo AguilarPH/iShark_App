@@ -87,6 +87,8 @@ public class BaseSteps {
         caps.setCapability("appium:deviceName", "Google Pixel 7 Pro");
         caps.setCapability("appium:platformVersion", "14");
         caps.setCapability("appium:automationName", "UiAutomator2");
+        caps.setCapability("appium:autoGrantPermissions", true);
+
         MutableCapabilities sauceOptions = new MutableCapabilities();
         sauceOptions.setCapability("appiumVersion", "latest");
         sauceOptions.setCapability("username", "dadmatinova");
