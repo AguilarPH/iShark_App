@@ -9,7 +9,7 @@ public class SignInSteps extends BaseSteps {
 
     public SignInSteps() {
         this.driver = getDriver();
-        this.signInPage = new SignInPage();
+        this.signInPage = new SignInPage(this.driver);
     }
 
     public void clickSignIn() {
