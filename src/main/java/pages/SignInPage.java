@@ -34,7 +34,7 @@ public class SignInPage extends BasePage{
     private WebElement setNsuPasswordText;
     public WebElement nsuPasswordText() {return setNsuPasswordText;}
 
-    @AndroidFindBy(id = "idSIButton9")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='Sign in']")
     private WebElement setNsuSignInButton;
     public WebElement nsuSignInButton() {return setNsuSignInButton;}
 }
