@@ -76,7 +76,7 @@ public class BaseSteps {
             throw new RuntimeException(e);
         }
         driver = new AndroidDriver(url, options);
-        System.out.println("session id: " + driver.getSessionId());
+        System.out.println("emulator session id: " + driver.getSessionId());
     }
 
     private void setSauceLabsCaps(){
@@ -104,11 +104,17 @@ public class BaseSteps {
             throw new RuntimeException(e);
         }
         this.driver = new AndroidDriver(url, caps);
+        System.out.println("SauceLabs session id: " + driver.getSessionId());
     }
 
     public void tearDown() {
         driver.quit();
-        service.stop();
+        System.out.println("Appium driver closed");
+
+        if (service != null && service.isRunning()) {
+            service.stop();
+            System.out.println("Appium server stopped");
+        }
     }
 
     protected void waitToClick(WebElement webElement) {
