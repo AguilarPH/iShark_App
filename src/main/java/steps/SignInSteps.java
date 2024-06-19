@@ -9,13 +9,12 @@ public class SignInSteps extends BaseSteps {
 
     public SignInSteps() {
         this.driver = getDriver();
-        this.signInPage = new SignInPage();
+        this.signInPage = new SignInPage(this.driver);
     }
 
     public void clickSignIn() {
         signInPage.signInButton().click();
     }
-
     public void sendNSUEmail(String email) {waitToSendKeys(signInPage.nsuEmailText(), email);}
     public void clickNSUNextButton() {signInPage.nsuNextButton().click();}
     public void sendNSUPassword(String password) {waitToSendKeys(signInPage.nsuPasswordText(), password);}
