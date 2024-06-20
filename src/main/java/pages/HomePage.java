@@ -13,15 +13,19 @@ public class HomePage extends BasePage{
         PageFactory.initElements(new AppiumFieldDecorator(driver), driver);
     }
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Home']")
-    private WebElement homeTab;
+    private WebElement setHomeTab;
+    public WebElement homeTab() {return setHomeTab;}
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Messages']")
-    private WebElement messagesTab;
+    private WebElement setMessagesTab;
+    public WebElement messagesTab() {return setMessagesTab;}
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Favorites']")
-    private WebElement favoritesTab;
+    private WebElement setFavoritesTab;
+    public WebElement favoritesTab() {return setFavoritesTab;}
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Menu']")
-    private WebElement menuTab;
+    private WebElement setMenuTab;
+    public WebElement menuTab() {return setMenuTab;}
 
 }
