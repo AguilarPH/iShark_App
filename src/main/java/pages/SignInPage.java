@@ -14,7 +14,7 @@ public class SignInPage extends BasePage{
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @AndroidFindBy(xpath = "//android.widget.Image[@text='CURRENT SIGN IN']")
+    @AndroidFindBy(xpath = "//android.widget.Image[@text='NSU Student, Faculty, Staff sign in']")
     private WebElement setSignInButton;
     public WebElement signInButton() {return setSignInButton;}
 
