@@ -1,5 +1,6 @@
 package pages;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage{
 
-    public HomePage(AndroidDriver driver) {
+    public HomePage(AppiumDriver driver) {
         PageFactory.initElements(new AppiumFieldDecorator(driver), driver);
     }
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Home']")
