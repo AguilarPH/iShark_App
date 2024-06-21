@@ -14,20 +14,35 @@ public class HomePage extends BasePage{
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Home']")
-    private WebElement setHomeTab;
-    public WebElement homeTab() {return setHomeTab;}
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@resource-id='com.blackboard.android.central.nova:id/toolbar']" +
+            "/descendant::android.widget.TextView")
+    private WebElement setStudentStatus;
+    public WebElement studentStatus() {return setStudentStatus;}
 
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Messages']")
-    private WebElement setMessagesTab;
-    public WebElement messagesTab() {return setMessagesTab;}
+    @AndroidFindBy(accessibility = "Open user menu")
+    private WebElement setUserMenu;
+    public WebElement userMenu() {return setUserMenu;}
 
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Favorites']")
-    private WebElement setFavoritesTab;
-    public WebElement favoritesTab() {return setFavoritesTab;}
+    @AndroidFindBy(xpath = "//android.widget.Image[@text='Photo']")
+    private WebElement setProfilePhoto;
+    public WebElement profilePhoto() {return setProfilePhoto;}
 
-    @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Menu']")
-    private WebElement setMenuTab;
-    public WebElement menuTab() {return setMenuTab;}
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Welcome']/parent::android.view.View" +
+            "/following-sibling::*[1]/descendant::android.widget.TextView")
+    private WebElement setProfileName;
+    public WebElement ProfileName() {return setProfileName;}
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Welcome']/parent::android.view.View" +
+            "/following-sibling::*[2]/descendant::android.widget.Button")
+    private WebElement setNsuNumber;
+    public WebElement NsuNumber() {return setNsuNumber;}
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Student Insights']")
+    private WebElement setStudentInsights;
+    public WebElement studentInsights() {return setStudentInsights;}
+
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='My Account Balance']")
+    private WebElement setAccountBalance;
+    public WebElement accountBalance() {return setAccountBalance;}
 
 }
