@@ -9,7 +9,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class SignInPage extends BasePage{
 
-    public SignInPage(AppiumDriver driver) {PageFactory.initElements(new AppiumFieldDecorator(driver), this);}
+    public SignInPage(AppiumDriver driver) {
+        super(driver);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+    }
 
     @AndroidFindBy(xpath ="//android.widget.Image[@text='NSU Student, Faculty, Staff sign in']")
     private WebElement setSignInButton;
