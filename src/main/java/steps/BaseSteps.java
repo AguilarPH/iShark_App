@@ -17,17 +17,20 @@ import java.net.URL;
 import java.time.Duration;
 
 public class BaseSteps {
-    private AppiumDriver driver;
+    private static AppiumDriver driver = null;
     protected AppiumDriverLocalService service;
 
     public BaseSteps() {
-//        try {
-//            configureAppium();
-//        } catch (MalformedURLException e) {
-//            throw new RuntimeException(e);
-//        }
-         setSauceLabsCaps();
-//        setAndroidOptions();
+        if (driver == null) {
+//            try {
+//                configureAppium();
+//            } catch (MalformedURLException e) {
+//                throw new RuntimeException(e);
+//            }
+//            setAndroidOptions();
+            setSauceLabsCaps();
+        }
+
     }
 
     public AppiumDriver getDriver() {return driver;}
