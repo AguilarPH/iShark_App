@@ -20,25 +20,25 @@ public class Main {
 
         homeSteps.waitForHomePage();
 
-//        WebElement navTabs = driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id=" +
-//                "'com.blackboard.android.central.nova:id/bottom_navigation']" +
-//                "/android.widget.FrameLayout/android.view.ViewGroup"));
-//
-//        List<WebElement> navTabsChildren = driver.findElements(By.xpath("//android.widget.FrameLayout" +
-//                "[@resource-id=\"com.blackboard.android.central.nova:id/bottom_navigation\"]" +
-//                "/android.widget.FrameLayout/android.view.ViewGroup/*"));
+        /*WebElement navTabs = driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id=" +
+                "'com.blackboard.android.central.nova:id/bottom_navigation']" +
+                "/android.widget.FrameLayout/android.view.ViewGroup"));
 
-//        List<String> expectedTabs = new ArrayList<>();
-//        expectedTabs.add("Home");
-//        expectedTabs.add("Messages");
-//        expectedTabs.add("Favorites");
-//        expectedTabs.add("Menu");
+        List<WebElement> navTabsChildren = driver.findElements(By.xpath("//android.widget.FrameLayout" +
+                "[@resource-id=\"com.blackboard.android.central.nova:id/bottom_navigation\"]" +
+                "/android.widget.FrameLayout/android.view.ViewGroup/*"));
 
-//        for (int i=0; i < navTabsChildren.size(); i++) {
-//            String tabText = navTabsChildren.get(i).findElement(AppiumBy.className("Android.widget.TextView")).getText();
-//            //System.out.println(tabText);
-//            Assert.assertEquals(tabText, expectedTabs.get(i));
-//        }
+        List<String> expectedTabs = new ArrayList<>();
+        expectedTabs.add("Home");
+        expectedTabs.add("Messages");
+        expectedTabs.add("Favorites");
+        expectedTabs.add("Menu");
+
+        for (int i=0; i < navTabsChildren.size(); i++) {
+            String tabText = navTabsChildren.get(i).findElement(AppiumBy.className("Android.widget.TextView")).getText();
+            //System.out.println(tabText);
+            Assert.assertEquals(tabText, expectedTabs.get(i));
+        }*/
 
         signInSteps.tearDown();
     }
