@@ -7,6 +7,8 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class HomePage extends BasePage{
 
     public HomePage(AppiumDriver driver) {
@@ -44,5 +46,10 @@ public class HomePage extends BasePage{
     @AndroidFindBy(xpath = "//android.widget.Button[@text='My Account Balance']")
     private WebElement setAccountBalance;
     public WebElement accountBalance() {return setAccountBalance;}
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='MY DEGREE PROGRESS']/parent::android.view.View" +
+            "/following-sibling::*[1]/descendant::android.widget.TabWidget/descendant::*")
+    private List<WebElement> setDegreeButtons;
+    public List<WebElement> degreeButtons() {return setDegreeButtons;}
 
 }
