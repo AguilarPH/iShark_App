@@ -10,8 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage extends BasePage{
 
     public HomePage(AppiumDriver driver) {
-        PageFactory.initElements(new AppiumFieldDecorator(driver), driver);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
+
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Home']")
     private WebElement setHomeTab;
     public WebElement homeTab() {return setHomeTab;}
