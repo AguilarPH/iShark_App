@@ -1,5 +1,6 @@
 package pages;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -8,19 +9,24 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HomePage extends BasePage{
 
-    public HomePage(AndroidDriver driver) {
-        PageFactory.initElements(new AppiumFieldDecorator(driver), driver);
+    public HomePage(AppiumDriver driver) {
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
+
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Home']")
-    private WebElement homeTab;
+    private WebElement setHomeTab;
+    public WebElement homeTab() {return setHomeTab;}
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Messages']")
-    private WebElement messagesTab;
+    private WebElement setMessagesTab;
+    public WebElement messagesTab() {return setMessagesTab;}
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Favorites']")
-    private WebElement favoritesTab;
+    private WebElement setFavoritesTab;
+    public WebElement favoritesTab() {return setFavoritesTab;}
 
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@content-desc='Menu']")
-    private WebElement menuTab;
+    private WebElement setMenuTab;
+    public WebElement menuTab() {return setMenuTab;}
 
 }
