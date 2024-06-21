@@ -3,9 +3,6 @@ package org.example;
 import steps.HomeSteps;
 import steps.SignInSteps;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -20,6 +17,8 @@ public class Main {
 
         signInSteps.sendNSUPassword("NsuFl@ridaQAPWD23");
         signInSteps.clickNSUSignIn();
+
+        homeSteps.waitForHomePage();
 
 //        WebElement navTabs = driver.findElement(By.xpath("//android.widget.FrameLayout[@resource-id=" +
 //                "'com.blackboard.android.central.nova:id/bottom_navigation']" +

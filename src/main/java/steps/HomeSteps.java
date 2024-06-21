@@ -12,5 +12,5 @@ public class HomeSteps extends BaseSteps{
         this.homePage = new HomePage(this.driver);
     }
 
-    public void waitForInitialPage() {waitToBeVisible(homePage.homeTab());}
+    public void waitForHomePage() {waitToBeVisible(homePage.homeTab());}
 }
