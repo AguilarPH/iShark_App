@@ -1,5 +1,6 @@
 package org.example;
 
+import steps.HomeSteps;
 import steps.SignInSteps;
 
 import java.util.ArrayList;
@@ -9,8 +10,9 @@ public class Main {
     public static void main(String[] args) {
 
         SignInSteps signInSteps = new SignInSteps();
-        signInSteps.waitForInitialPage();
+        HomeSteps homeSteps = new HomeSteps();
 
+        signInSteps.waitForInitialPage();
         signInSteps.clickSignIn();
 
         signInSteps.sendNSUEmail("nv486@mynsu.nova.edu");
