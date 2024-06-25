@@ -143,4 +143,14 @@ public class BaseSteps {
             System.out.println(contextHandle);
         }
     }
+
+    public void switchToWebView() {
+        AndroidDriver androidDriver = (AndroidDriver) driver;
+        androidDriver.context("WEBVIEW");
+    }
+
+    public void switchToNativeApp() {
+        AndroidDriver androidDriver = (AndroidDriver) driver;
+        androidDriver.context("NATIVE_APP");
+    }
 }
