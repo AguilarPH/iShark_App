@@ -107,7 +107,7 @@ public class BaseSteps {
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-        this.driver = new AppiumDriver(url, caps);
+        this.driver = new AndroidDriver(url, caps);
         System.out.println("SauceLabs session id: " + driver.getSessionId());
     }
 
