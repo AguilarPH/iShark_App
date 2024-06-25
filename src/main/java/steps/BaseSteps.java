@@ -15,6 +15,7 @@ import java.net.*;
 import java.lang.*;
 import java.net.URL;
 import java.time.Duration;
+import java.util.Set;
 
 public class BaseSteps {
     private static AppiumDriver driver = null;
@@ -133,5 +134,13 @@ public class BaseSteps {
     protected void waitToBeVisible(WebElement webElement) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
+    public void getContextHandles() {
+        AndroidDriver androidDriver = (AndroidDriver) driver;
+        Set<String> contextHandles = androidDriver.getContextHandles();
+        for (String contextHandle : contextHandles) {
+            System.out.println(contextHandle);
+        }
     }
 }
