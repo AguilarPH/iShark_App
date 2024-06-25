@@ -10,7 +10,6 @@ public class Main {
         HomeSteps homeSteps = new HomeSteps();
 
         signInSteps.waitForInitialPage();
-        signInSteps.getContextHandles();
         signInSteps.clickSignIn();
 
         signInSteps.sendNSUEmail("nv486@mynsu.nova.edu");
