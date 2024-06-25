@@ -15,7 +15,11 @@ public class SignInSteps extends BaseSteps {
     public void clickSignIn() {
         signInPage.signInButton().click();
     }
-    public void sendNSUEmail(String email) {waitToSendKeys(signInPage.nsuEmailText(), email);}
+    public void sendNSUEmail(String email) {
+        switchToWebView();
+        waitToSendKeys(signInPage.nsuEmailText(), email);
+        switchToNativeApp();
+    }
     public void clickNSUNextButton() {signInPage.nsuNextButton().click();}
     public void sendNSUPassword(String password) {waitToSendKeys(signInPage.nsuPasswordText(), password);}
     public void clickNSUSignIn() {signInPage.nsuSignInButton().click();}
