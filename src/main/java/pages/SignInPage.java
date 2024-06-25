@@ -22,18 +22,18 @@ public class SignInPage extends BasePage{
     private WebElement setGuestIngress;
     public WebElement guestIngress() {return setGuestIngress;}
 
-    @AndroidFindBy(className = "android.widget.EditText")
+//    @AndroidFindBy(className = "android.widget.EditText")
     @AndroidFindBy(xpath = "//input[@id='i0116']")
     private WebElement setNsuEmailText;
     public WebElement nsuEmailText() {return setNsuEmailText;}
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='Next']")
-    @AndroidFindBy(xpath = "//input[@id='idSIButton9']")
+//    @AndroidFindBy(xpath = "//input[@id='idSIButton9']")
     private WebElement setNsuNextButton;
     public WebElement nsuNextButton() {return setNsuNextButton;}
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter password']/parent::android.view.View" +
-            "/following-sibling::*[1]/descendant::android.widget.EditText")
+    /*@AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter password']/parent::android.view.View" +
+            "/following-sibling::*[1]/descendant::android.widget.EditText")*/
     @AndroidFindBy(xpath = "//input[@id='i0118']")
     private WebElement setNsuPasswordText;
     public WebElement nsuPasswordText() {return setNsuPasswordText;}
