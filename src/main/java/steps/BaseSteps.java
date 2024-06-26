@@ -146,11 +146,19 @@ public class BaseSteps {
 
     public void switchToWebView() {
         AndroidDriver androidDriver = (AndroidDriver) driver;
-        androidDriver.context("WEBVIEW");
+        Set<String> contextHandles = androidDriver.getContextHandles();
+        for (String contextHandle : contextHandles) {
+            if (contextHandle.contains("WEBVIEW")) {
+                androidDriver.context(contextHandle);
+                System.out.println("Switched to " + contextHandle);
+                break;
+            }
+        }
     }
 
     public void switchToNativeApp() {
         AndroidDriver androidDriver = (AndroidDriver) driver;
         androidDriver.context("NATIVE_APP");
+        System.out.println("Switched to NATIVE_APP");
     }
 }
