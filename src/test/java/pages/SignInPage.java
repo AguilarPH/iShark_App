@@ -30,6 +30,8 @@ public class SignInPage extends BasePage{
     public WebElement nsuNextButton() {return setNsuNextButton;}
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"We couldn't find an account with that username.\"]")
+    private WebElement setNsuInvalidEmailText;
+    public WebElement nsuInvalidEmailText() {return setNsuInvalidEmailText;}
 
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter password']/parent::android.view.View" +
             "/following-sibling::*[1]/descendant::android.widget.EditText")
@@ -39,4 +41,9 @@ public class SignInPage extends BasePage{
     @AndroidFindBy(xpath = "//android.widget.Button[@text='Sign in']")
     private WebElement setNsuSignInButton;
     public WebElement nsuSignInButton() {return setNsuSignInButton;}
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Your account or password is incorrect. If you can't remember your password\"]")
+    private WebElement setNsuInvalidPasswordText;
+    public WebElement nsuInvalidPasswordText() {return setNsuInvalidPasswordText;}
+
 }
