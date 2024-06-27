@@ -22,7 +22,7 @@ public class SignInPage extends BasePage{
     private WebElement setGuestIngress;
     public WebElement guestIngress() {return setGuestIngress;}
 
-//    @AndroidFindBy(className = "android.widget.EditText")
+    //    @AndroidFindBy(className = "android.widget.EditText")
     @AndroidFindBy(xpath = "//input[@id='i0116']")
     private WebElement setNsuEmailText;
     public WebElement nsuEmailText() {return setNsuEmailText;}

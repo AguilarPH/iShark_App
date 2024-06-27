@@ -21,22 +21,28 @@ public class SignInPage extends BasePage{
     private WebElement setGuestIngress;
     public WebElement guestIngress() {return setGuestIngress;}
 
-    @AndroidFindBy(className = "android.widget.EditText")
+    @AndroidFindBy(xpath = "//input[@id='i0116']")
     private WebElement setNsuEmailText;
     public WebElement nsuEmailText() {return setNsuEmailText;}
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='Next']")
+//    @AndroidFindBy(xpath = "//input[@id='idSIButton9']")
     private WebElement setNsuNextButton;
     public WebElement nsuNextButton() {return setNsuNextButton;}
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"We couldn't find an account with that username.\"]")
+    @AndroidFindBy(xpath = "//div[@id='usernameError']")
+    private WebElement setNsuAccountNotFoundText;
+    public WebElement nsuAccountNotFoundText() {return setNsuAccountNotFoundText;}
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter password']/parent::android.view.View" +
-            "/following-sibling::*[1]/descendant::android.widget.EditText")
+    @AndroidFindBy(xpath = "//input[@id='i0118']")
     private WebElement setNsuPasswordText;
     public WebElement nsuPasswordText() {return setNsuPasswordText;}
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='Sign in']")
     private WebElement setNsuSignInButton;
     public WebElement nsuSignInButton() {return setNsuSignInButton;}
+
+    @AndroidFindBy(xpath = "//div[@id='passwordError']")
+    private WebElement setNsuIncorrectPasswordText;
+    public WebElement nsuIncorrectPasswordText() {return setNsuIncorrectPasswordText;}
 }
