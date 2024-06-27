@@ -29,6 +29,8 @@ public class SignInPage extends BasePage{
     private WebElement setNsuNextButton;
     public WebElement nsuNextButton() {return setNsuNextButton;}
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"We couldn't find an account with that username.\"]")
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter password']/parent::android.view.View" +
             "/following-sibling::*[1]/descendant::android.widget.EditText")
     private WebElement setNsuPasswordText;
