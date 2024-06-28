@@ -113,7 +113,7 @@ public class BaseSteps {
         System.out.println("SauceLabs session id: " + driver.getSessionId());
     }
 
-    @AfterSuite
+    @AfterSuite(alwaysRun = true)
     public void tearDown() {
         driver.quit();
         System.out.println("Appium driver closed");
