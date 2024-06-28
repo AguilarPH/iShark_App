@@ -15,13 +15,15 @@ public class LoginTests {
         signInSteps.waitForInitialPage();
         signInSteps.clickSignIn();
 
-//        Assert.assertTrue(signInSteps.isNSUEmailValid());
-
         signInSteps.sendNSUEmail("nv486@mynsu.nova.edu");
+        signInSteps.clickNSUNextButton();
         signInSteps.waitForNSUPasswordPage();
+
+        Assert.assertTrue(signInSteps.isNSUEmailValid());
 
         signInSteps.sendNSUPassword("NsuFl@ridaQAPWD23");
         signInSteps.clickNSUSignIn();
+        homeSteps.waitForHomePage();
 
     }
 }
