@@ -17,9 +17,17 @@ public class SignInSteps extends BaseSteps {
     }
     public void sendNSUEmail(String email) {waitToSendKeys(signInPage.nsuEmailText(), email);}
     public void clickNSUNextButton() {signInPage.nsuNextButton().click();}
-    public void sendNSUPassword(String password) {waitToSendKeys(signInPage.nsuPasswordText(), password);}
+    public void sendNSUPassword(String password) {waitToSendKeys(signInPage.nsuPasswordField(), password);}
     public void clickNSUSignIn() {signInPage.nsuSignInButton().click();}
     public void waitForInitialPage() {waitToBeVisible(signInPage.signInButton());}
     public void waitForNSUEmailPage() {waitToBeVisible(signInPage.nsuEmailText());}
-    public void waitForNSUPasswordPage() {waitToBeVisible(signInPage.nsuPasswordText());}
+    public void waitForNSUPasswordPage() {waitToBeVisible(signInPage.nsuPasswordField());}
+
+    public boolean isNSUEmailValid() {
+        return signInPage.nsuPasswordText().isDisplayed();
+    }
+
+    public void isNSUEmailInvalid() {
+        waitToBeVisible(signInPage.nsuInvalidEmailText());
+    }
 }

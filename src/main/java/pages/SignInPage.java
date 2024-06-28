@@ -1,7 +1,6 @@
 package pages;
 
 import io.appium.java_client.AppiumDriver;
-
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import org.openqa.selenium.WebElement;
@@ -22,6 +21,10 @@ public class SignInPage extends BasePage{
     private WebElement setGuestIngress;
     public WebElement guestIngress() {return setGuestIngress;}
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sign in']")
+    private WebElement setNsuSignInText;
+    public WebElement nsuSignInText() {return setNsuSignInText;}
+
     @AndroidFindBy(className = "android.widget.EditText")
     private WebElement setNsuEmailText;
     public WebElement nsuEmailText() {return setNsuEmailText;}
@@ -30,12 +33,24 @@ public class SignInPage extends BasePage{
     private WebElement setNsuNextButton;
     public WebElement nsuNextButton() {return setNsuNextButton;}
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter password']/parent::android.view.View" +
-            "/following-sibling::*[1]/descendant::android.widget.EditText")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"We couldn't find an account with that username.\"]")
+    private WebElement setNsuInvalidEmailText;
+    public WebElement nsuInvalidEmailText() {return setNsuInvalidEmailText;}
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter password']")
     private WebElement setNsuPasswordText;
     public WebElement nsuPasswordText() {return setNsuPasswordText;}
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Enter password']/parent::android.view.View" +
+            "/following-sibling::*[1]/descendant::android.widget.EditText")
+    private WebElement setNsuPasswordField;
+    public WebElement nsuPasswordField() {return setNsuPasswordField;}
 
     @AndroidFindBy(xpath = "//android.widget.Button[@text='Sign in']")
     private WebElement setNsuSignInButton;
     public WebElement nsuSignInButton() {return setNsuSignInButton;}
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Your account or password is incorrect. If you can't remember your password\"]")
+    private WebElement setNsuInvalidPasswordText;
+    public WebElement nsuInvalidPasswordText() {return setNsuInvalidPasswordText;}
 }

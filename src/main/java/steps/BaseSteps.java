@@ -9,6 +9,8 @@ import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterSuite;
 
 import java.io.*;
 import java.net.*;
@@ -82,6 +84,7 @@ public class BaseSteps {
         System.out.println("emulator session id: " + driver.getSessionId());
     }
 
+    @BeforeSuite
     private void setSauceLabsCaps(){
 
         MutableCapabilities caps = new MutableCapabilities();
@@ -110,6 +113,7 @@ public class BaseSteps {
         System.out.println("SauceLabs session id: " + driver.getSessionId());
     }
 
+    @AfterSuite(alwaysRun = true)
     public void tearDown() {
         driver.quit();
         System.out.println("Appium driver closed");
@@ -134,4 +138,5 @@ public class BaseSteps {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(webElement));
     }
+
 }
