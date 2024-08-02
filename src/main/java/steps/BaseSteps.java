@@ -17,10 +17,13 @@ import java.net.*;
 import java.lang.*;
 import java.net.URL;
 import java.time.Duration;
+import java.util.Properties;
 
 public class BaseSteps {
     private static AppiumDriver driver = null;
     protected AppiumDriverLocalService service;
+    protected Properties props;
+    InputStream inputStream;
 
     public BaseSteps() {
         if (driver == null) {
@@ -86,31 +89,44 @@ public class BaseSteps {
 
     @BeforeSuite
     private void setSauceLabsCaps(){
+        props = new Properties();
+        String propFileName = "config.properties";
+
+        try {
+            inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+            props.load(inputStream);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         MutableCapabilities caps = new MutableCapabilities();
-        caps.setCapability("platformName", "Android");
-        caps.setCapability("appium:app", "storage:filename=iShark_3.3.apk");  // The filename of the mobile app
-        caps.setCapability("appium:deviceName", "Google Pixel 7 Pro");
-        caps.setCapability("appium:platformVersion", "14");
-        caps.setCapability("appium:automationName", "UiAutomator2");
+        caps.setCapability("platformName", props.getProperty("androidPlatformName"));
+        caps.setCapability("appium:app", props.getProperty("androidAppSauceLabsPath"));  // The filename of the mobile app
+        caps.setCapability("appium:deviceName", props.getProperty("androidDeviceName"));
+        caps.setCapability("appium:platformVersion", props.getProperty("androidPlatformVersion"));
+        caps.setCapability("appium:automationName", props.getProperty("androidAutomationName"));
         caps.setCapability("appium:autoGrantPermissions", true);
 
         MutableCapabilities sauceOptions = new MutableCapabilities();
-        sauceOptions.setCapability("appiumVersion", "latest");
-        sauceOptions.setCapability("username", "dadmatinova");
-        sauceOptions.setCapability("accessKey", "d64f8e10-d97a-4fe4-91f2-17527e7b6949");
-        sauceOptions.setCapability("build", "appium-build-001");
-        sauceOptions.setCapability("name", "iShark-Android-Test-001");
+        sauceOptions.setCapability("appiumVersion", props.getProperty("appiumVersion"));
+        sauceOptions.setCapability("username", props.getProperty("saucelabsUsername"));
+        sauceOptions.setCapability("accessKey", props.getProperty("saucelabsAccessKey"));
+        sauceOptions.setCapability("build", props.getProperty("buildName"));
+        sauceOptions.setCapability("name", props.getProperty("testName"));
         caps.setCapability("sauce:options", sauceOptions);
 
         URL url = null;
         try {
-            url = new URL("https://ondemand.us-west-1.saucelabs.com:443/wd/hub");
+            url = new URL(props.getProperty("saucelabsUrl"));
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
-        this.driver = new AppiumDriver(url, caps);
-        System.out.println("SauceLabs session id: " + driver.getSessionId());
+        try {
+            this.driver = new AppiumDriver(url, caps);
+            System.out.println("SauceLabs session id: " + driver.getSessionId());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @AfterSuite(alwaysRun = true)
