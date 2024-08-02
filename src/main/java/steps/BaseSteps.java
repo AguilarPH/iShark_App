@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.Parameters;
 
 import java.io.*;
 import java.net.*;
@@ -87,8 +88,9 @@ public class BaseSteps {
         System.out.println("emulator session id: " + driver.getSessionId());
     }
 
+    @Parameters({"platformName", "platformVersion", "deviceName"})
     @BeforeSuite
-    private void setSauceLabsCaps(){
+    private void setSauceLabsCaps(String platformName, String platformVersion, String deviceName) {
         props = new Properties();
         String propFileName = "config.properties";
 
@@ -100,10 +102,10 @@ public class BaseSteps {
         }
 
         MutableCapabilities caps = new MutableCapabilities();
-        caps.setCapability("platformName", props.getProperty("androidPlatformName"));
+        caps.setCapability("platformName", platformName);
         caps.setCapability("appium:app", props.getProperty("androidAppSauceLabsPath"));  // The filename of the mobile app
-        caps.setCapability("appium:deviceName", props.getProperty("androidDeviceName"));
-        caps.setCapability("appium:platformVersion", props.getProperty("androidPlatformVersion"));
+        caps.setCapability("appium:platformVersion", platformVersion);
+        caps.setCapability("appium:deviceName", deviceName);
         caps.setCapability("appium:automationName", props.getProperty("androidAutomationName"));
         caps.setCapability("appium:autoGrantPermissions", true);
 
