@@ -34,7 +34,7 @@ public class BaseSteps {
 //                throw new RuntimeException(e);
 //            }
 //            setAndroidOptions();
-            setSauceLabsCaps();
+//            setSauceLabsCaps("Android", "14.0", "Google Pixel 7 Pro");
         }
 
     }
