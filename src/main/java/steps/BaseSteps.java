@@ -26,18 +26,18 @@ public class BaseSteps {
     protected Properties props;
     InputStream inputStream;
 
-    public BaseSteps() {
-        if (driver == null) {
-//            try {
-//                configureAppium();
-//            } catch (MalformedURLException e) {
-//                throw new RuntimeException(e);
-//            }
-//            setAndroidOptions();
+//    public BaseSteps() {
+//        if (driver == null) {
+////            try {
+////                configureAppium();
+////            } catch (MalformedURLException e) {
+////                throw new RuntimeException(e);
+////            }
+////            setAndroidOptions();
 //            setSauceLabsCaps("Android", "14.0", "Google Pixel 7 Pro");
-        }
-
-    }
+//        }
+//
+//    }
 
     public AppiumDriver getDriver() {return driver;}
 
@@ -142,14 +142,14 @@ public class BaseSteps {
         }
     }
 
-    protected void waitToClick(WebElement webElement) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(webElement)).click();
+    protected void click(WebElement webElement) {
+        waitToBeVisible(webElement);
+        webElement.click();
     }
 
-    protected void waitToSendKeys(WebElement webElement, String text) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(webElement)).sendKeys(text);
+    protected void sendKeys(WebElement webElement, String text) {
+        waitToBeVisible(webElement);
+        webElement.sendKeys(text);
     }
 
     protected void waitToBeVisible(WebElement webElement) {
