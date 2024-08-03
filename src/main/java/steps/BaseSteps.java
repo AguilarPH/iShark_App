@@ -23,7 +23,7 @@ import java.util.Properties;
 public class BaseSteps {
     private static AppiumDriver driver = null;
     protected AppiumDriverLocalService service;
-    protected Properties props;
+    protected static Properties props;
     InputStream inputStream;
 
     @Parameters({"platformName", "platformVersion", "deviceName"})
