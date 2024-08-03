@@ -26,18 +26,19 @@ public class BaseSteps {
     protected Properties props;
     InputStream inputStream;
 
-//    public BaseSteps() {
-//        if (driver == null) {
-////            try {
-////                configureAppium();
-////            } catch (MalformedURLException e) {
-////                throw new RuntimeException(e);
-////            }
-////            setAndroidOptions();
-//            setSauceLabsCaps("Android", "14.0", "Google Pixel 7 Pro");
-//        }
-//
-//    }
+    @Parameters({"platformName", "platformVersion", "deviceName"})
+    public BaseSteps(String platformName, String platformVersion, String deviceName) {
+        if (driver == null) {
+//            try {
+//                configureAppium();
+//            } catch (MalformedURLException e) {
+//                throw new RuntimeException(e);
+//            }
+//            setAndroidOptions();
+            setSauceLabsCaps(platformName, platformVersion, deviceName);
+        }
+
+    }
 
     public AppiumDriver getDriver() {return driver;}
 
