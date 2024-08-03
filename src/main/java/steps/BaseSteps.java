@@ -142,14 +142,14 @@ public class BaseSteps {
         }
     }
 
-    protected void waitToClick(WebElement webElement) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(webElement)).click();
+    protected void click(WebElement webElement) {
+        waitToBeVisible(webElement);
+        webElement.click();
     }
 
-    protected void waitToSendKeys(WebElement webElement, String text) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(webElement)).sendKeys(text);
+    protected void sendKeys(WebElement webElement, String text) {
+        waitToBeVisible(webElement);
+        webElement.sendKeys(text);
     }
 
     protected void waitToBeVisible(WebElement webElement) {
