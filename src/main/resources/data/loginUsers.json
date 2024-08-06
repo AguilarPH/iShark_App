@@ -1,0 +1,14 @@
+{
+  "invalidUser": {
+    "username": "invalid@mynsu.nova.edu",
+    "password": "NsuFl@ridaQAPWD23"
+  },
+  "invalidPassword": {
+    "username": "nv486@mynsu.nova.edu",
+    "password": "badPassword"
+  },
+  "validUser": {
+    "username": "NsuFl@ridaQAPWD23",
+    "password": "NsuFl@ridaQAPWD23"
+  }
+}
