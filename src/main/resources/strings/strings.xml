@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+<!-- Appium server -->
+    <string name="err_server_failed_to_start">An error occurred while starting the Appium server</string>
+    <string name="info_server_started">Appium server started successfully</string>
+    <string name="info_server_stopped">Appium driver closed successfully</string>
+    <string name="info_server_stopped">Appium server stopped successfully</string>
+<!-- Sauce Labs -->
+    <string name="info_sauce_labs_session_started">SauceLabs session id: </string>
+</resources>
