@@ -41,7 +41,7 @@ public class BaseSteps {
 
     public AppiumDriver getDriver() {return driver;}
 
-    private void configureAppium() throws MalformedURLException{
+    private void configureAppium() throws MalformedURLException {
         // Specify the path to your Node.js executable
         String nodeJsPath = "C:\\Program Files\\nodejs\\node.exe";
 
