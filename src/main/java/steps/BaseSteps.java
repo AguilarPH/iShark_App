@@ -18,6 +18,7 @@ import java.net.*;
 import java.lang.*;
 import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.Properties;
 
 public class BaseSteps {
@@ -26,18 +27,19 @@ public class BaseSteps {
     protected static Properties props;
     InputStream inputStream;
 
-//    public BaseSteps() {
-//        if (driver == null) {
+    @Parameters({"platformName", "platformVersion", "deviceName"})
+    @BeforeSuite
+    public void beforeSuite(String platformName, String platformVersion, String deviceName) {
+                if (driver == null) {
 ////            try {
 ////                configureAppium();
 ////            } catch (MalformedURLException e) {
 ////                throw new RuntimeException(e);
 ////            }
 ////            setAndroidOptions();
-////            setSauceLabsCaps();
-//        }
-//
-//    }
+            setSauceLabsCaps(platformName, platformVersion, deviceName);
+        }
+    }
 
     public AppiumDriver getDriver() {return driver;}
 
@@ -88,8 +90,6 @@ public class BaseSteps {
         System.out.println("emulator session id: " + driver.getSessionId());
     }
 
-    @Parameters({"platformName", "platformVersion", "deviceName"})
-    @BeforeSuite
     private void setSauceLabsCaps(String platformName, String platformVersion, String deviceName) {
         props = new Properties();
         String propFileName = "config.properties";
