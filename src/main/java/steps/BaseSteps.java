@@ -26,19 +26,18 @@ public class BaseSteps {
     protected static Properties props;
     InputStream inputStream;
 
-    @Parameters({"platformName", "platformVersion", "deviceName"})
-    public BaseSteps(String platformName, String platformVersion, String deviceName) {
-        if (driver == null) {
-//            try {
-//                configureAppium();
-//            } catch (MalformedURLException e) {
-//                throw new RuntimeException(e);
-//            }
-//            setAndroidOptions();
-            setSauceLabsCaps(platformName, platformVersion, deviceName);
-        }
-
-    }
+//    public BaseSteps() {
+//        if (driver == null) {
+////            try {
+////                configureAppium();
+////            } catch (MalformedURLException e) {
+////                throw new RuntimeException(e);
+////            }
+////            setAndroidOptions();
+////            setSauceLabsCaps();
+//        }
+//
+//    }
 
     public AppiumDriver getDriver() {return driver;}
 
