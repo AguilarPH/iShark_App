@@ -1,6 +1,7 @@
 package steps;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.InteractsWithApps;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -18,7 +19,6 @@ import java.net.*;
 import java.lang.*;
 import java.net.URL;
 import java.time.Duration;
-import java.util.HashMap;
 import java.util.Properties;
 
 public class BaseSteps {
@@ -26,17 +26,19 @@ public class BaseSteps {
     protected AppiumDriverLocalService service;
     protected static Properties props;
     InputStream inputStream;
+    private String platformName;
 
     @Parameters({"platformName", "platformVersion", "deviceName"})
     @BeforeSuite
     public void beforeSuite(String platformName, String platformVersion, String deviceName) {
-                if (driver == null) {
-////            try {
-////                configureAppium();
-////            } catch (MalformedURLException e) {
-////                throw new RuntimeException(e);
-////            }
-////            setAndroidOptions();
+        this.platformName = platformName;
+        if (driver == null) {
+//            try {
+//                configureAppium();
+//            } catch (MalformedURLException e) {
+//                throw new RuntimeException(e);
+//            }
+//            setAndroidOptions();
             setSauceLabsCaps(platformName, platformVersion, deviceName);
         }
     }
@@ -128,6 +130,26 @@ public class BaseSteps {
             System.out.println("SauceLabs session id: " + driver.getSessionId());
         } catch (Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public void closeApp() {
+        switch (platformName) {
+            case "Android":
+                ((InteractsWithApps) driver).terminateApp(props.getProperty("androidAppPackage"));
+                break;
+            case "iOS":
+                ((InteractsWithApps) driver).terminateApp(props.getProperty("iOSBundleId"));
+        }
+    }
+
+    public void launchApp() {
+        switch (platformName) {
+            case "Android":
+                ((InteractsWithApps) driver).activateApp(props.getProperty("androidAppPackage"));
+                break;
+            case "iOS":
+                ((InteractsWithApps) driver).activateApp(props.getProperty("iOSBundleId"));
         }
     }
 
