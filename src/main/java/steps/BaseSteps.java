@@ -185,7 +185,6 @@ public class BaseSteps {
     public String getDateTime() {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
         Date date = new Date();
-        System.out.println(dateFormat.format(date));
         return dateFormat.format(date);
     }
 
