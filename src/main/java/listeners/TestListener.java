@@ -4,6 +4,7 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 import steps.BaseSteps;
 
 import java.io.File;
@@ -32,8 +33,12 @@ public class TestListener implements  ITestListener {
         String imgPath = "Screenshots" + File.separator + params.get("platformName") + "_" +params.get("platformVersion")
                 + "_" + params.get("deviceName") + File.separator + baseSteps.getDateTime() + File.separator +
                 result.getTestClass().getRealClass().getSimpleName() + File.separator + result.getName() + ".png";
+        String completeImagePath = System.getProperty("user.dir") + File.separator + imgPath;
         try {
             FileUtils.copyFile(file, new File("FailScr.png"));
+            Reporter.log("This is the Screenshot of the failed test");
+            Reporter.log("<a href='"+ completeImagePath + "'> < img scr='" + completeImagePath +
+                    "'height='100' width='100'/> </a>");
         } catch (IOException e) {
             e.printStackTrace();
         }
