@@ -19,7 +19,6 @@ import java.net.*;
 import java.lang.*;
 import java.net.URL;
 import java.time.Duration;
-import java.util.HashMap;
 import java.util.Properties;
 
 public class BaseSteps {
